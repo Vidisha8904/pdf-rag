@@ -32,15 +32,25 @@ def get_vector_store(text_chunks):
 
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details in depth,
-    you can use little bit knowledge of yours, or your reasoning, if required, you can perform mathematicals tasks.
-    if the answer is not in provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
-    .do not change your answer if the same is question is asked again and again.
-    Context:\n {context}?\n
-    Question: \n{question}\n
+    Answer the question with as much detail as possible using the provided context. 
+    
+    - If the required information is **fully available** in the context, provide an **in-depth** answer.  
+    - If something **related** to the query exists in the context, use **logical reasoning** and **your knowledge** to provide a well-thought-out response.  
+    - If the answer is **not available in the context**, respond with: **"Answer is not available in the context."**  
+    - Perform any **mathematical tasks** if required.  
+    - Do **not** generate incorrect or misleading answers.  
+    - Do **not** change your response if the same question is asked multiple times.  
+    - If the query is **unclear or ambiguous**, ask for **clarification** instead of making assumptions.  
+    - If the response contains multiple key points, **structure it using bullet points or paragraphs** for better clarity.  
+    - Support **multi-turn conversations**, remembering previous interactions if relevant.  
+    - Maintain an **appropriate tone** based on the context—**formal, conversational, concise, or elaborate**, as needed.  
+
+    Context:\n {context}\n
+    Question:\n {question}\n
 
     Answer:
     """
+
 
     model = ChatOpenAI(model="gpt-4o",
                        temperature=0.3)
