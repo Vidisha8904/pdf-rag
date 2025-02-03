@@ -32,8 +32,10 @@ def get_vector_store(text_chunks):
 
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details in depth, if the answer is not in
-    provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
+    Answer the question as detailed as possible from the provided context, make sure to provide all the details in depth,
+    you can use little bit knowledge of yours, if required, you can perform mathematicals tasks.
+    if the answer is not in provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
+    .do not change your answer if the same is question is asked again and again.
     Context:\n {context}?\n
     Question: \n{question}\n
 
