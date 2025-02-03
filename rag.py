@@ -42,7 +42,7 @@ def get_conversational_chain():
     Answer:
     """
 
-    model = ChatOpenAI(model="gpt-3.5-turbo",
+    model = ChatOpenAI(model="gpt-4o",
                        temperature=0.3)
 
     prompt = PromptTemplate(template = prompt_template, input_variables = ["context", "question"])
