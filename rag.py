@@ -33,11 +33,11 @@ def get_vector_store(text_chunks):
 def get_conversational_chain():
     prompt_template = """
     Answer the question with as much detail as possible using the provided context. 
-    
+
     - If the required information is **fully available** in the context, provide an **in-depth** answer.  
     - If something **related** to the query exists in the context, use **logical reasoning** and **your knowledge** to provide a well-thought-out response.  
     - If the answer is **not available in the context**, respond with: **"Answer is not available in the context."**  
-    - Perform any **mathematical tasks** if required.  
+    - If the task involves **arithmetic** (such as addition, subtraction, etc.), **perform the calculation directly** and provide the exact result.  
     - Do **not** generate incorrect or misleading answers.  
     - Do **not** change your response if the same question is asked multiple times.  
     - If the query is **unclear or ambiguous**, ask for **clarification** instead of making assumptions.  
@@ -50,6 +50,7 @@ def get_conversational_chain():
 
     Answer:
     """
+
 
 
     model = ChatOpenAI(model="gpt-4o",
@@ -79,7 +80,7 @@ def main():
     st.set_page_config("Chat PDF")
     st.header("Chat with PDF")
 
-    user_question = st.text_input("Ask a Question from the PDF Files")
+    user_question = st.text_input("Ask any Question from the PDF Files")
 
     if user_question:
         user_input(user_question)
